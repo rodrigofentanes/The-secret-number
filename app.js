@@ -48,33 +48,27 @@ function newGame() {
   clearInputValue('id', 'numberInput');
   document.getElementById('guess').disabled = false;
   document.getElementById('newGame').disabled = true;
-  console.log('secretNumber :: ' + secretNumber);
 }
 
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   let drawNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-  console.log('BEFORE :: drawNumber :: ' + drawNumber);
-  console.log('BEFORE :: listDrawnNumbers.length :: ' + listDrawnNumbers.length);
   
   if (listDrawnNumbers.includes(drawNumber)) {
     if (listDrawnNumbers.length > (maxNumber - minNumber)) {
-      console.log('INSIDE :: CLEAR LIST');
       listDrawnNumbers = [];
       drawNumber = getRandomIntInclusive(min, max);
       return drawNumber;
     }
     
     else {
-      console.log('INSIDE :: GET OTHER VALUE');
       drawNumber = getRandomIntInclusive(min, max);
       return drawNumber;
     }
   }
 
   else {
-    console.log('INSIDE ELSE :: drawNumber :: ' + drawNumber);
     listDrawnNumbers.push(drawNumber);
     return drawNumber;
   }
